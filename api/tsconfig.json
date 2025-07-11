@@ -103,3 +103,17 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   }
 }
+
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["vitest", "node"],
+    "skipLibCheck": true
+  },
+  
+  "include": ["src"]
+}
