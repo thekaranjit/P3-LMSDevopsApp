@@ -1,20 +1,14 @@
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 
 // Mock Data
 import { courseData, courses } from "./mock-data/courses";
 
-// Define handlers that catch the corresponding requests and returns the mock data.
+// Define handlers that catch the corresponding requests and return the mock data
 export const handlers = [
-  rest.get(
-    `${import.meta.env.VITE_API_URL}/student/courses`,
-    (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(courses));
-    }
-  ),
-  rest.get(
-    `${import.meta.env.VITE_API_URL}/student/getCourse/:id`,
-    (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(courseData));
-    }
-  ),
+  http.get(`${import.meta.env.VITE_API_URL}/student/courses`, () => {
+    return HttpResponse.json(courses, { status: 200 });
+  }),
+  http.get(`${import.meta.env.VITE_API_URL}/student/getCourse/:id`, () => {
+    return HttpResponse.json(courseData, { status: 200 });
+  })
 ];
